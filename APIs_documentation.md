@@ -72,24 +72,123 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
 ### 3.1.1. E-mail 발송 ``POST /email``
 요청 파라미터
 
-<table>
+<table width="100%">
 <tr><td colspan="2">파라미터 목록</td></tr>
 <tr>
-	<td><code>message</code><b>*</b><br><i></i></td>
-	<td>전송할 E-mail 메시지 정보
-<table><tr><td>html</td><td>발송할 E-mail 메시지의 HTML 본문</td></tr>
-<tr><td>text</td><td>발송할 E-mail 메시지의 텍스트 본문</td></tr>
-<tr><td>subject</td><td>제목</td></tr>
-<tr><td>from_email</td><td>발신자 E-mail 주소</td></tr>
-<tr><td>from_name</td><td>발신자 이름</td></tr>
-<tr><td>to</td><td>수신자 목록
-<table><tr><td>email</td><td>수신자 E-mail 주소</td></tr>
-<tr><td>name</td><td>수신자 이름</td></tr>
-<tr><td>type</td><td>수신자 타입(to, cc, bcc)</td></tr>
-</table>
-</td></tr>
-</table>
-    </td>
+  <td>**message**\*<br>`Struct`</td>
+  <td>전송할 E-mail 메시지 정보
+    <table width="100%">
+      <tr>
+        <td>html<br><code>String</code></td>
+        <td>발송할 E-mail 메시지의 HTML 본문</td>
+      </tr>
+      <tr>
+        <td>text<br><code>String</code></td>
+        <td>발송할 E-mail 메시지의 텍스트 본문</td>
+      </tr>
+      <tr>
+        <td>subject<br><code>String</code></td>
+        <td>제목</td>
+      </tr>
+      <tr>
+        <td>**from_email**\*<br>`String`</td>
+        <td>발신자 E-mail 주소</td>
+      </tr>
+      <tr>
+        <td>from_name<br>`String`, `null`</td>
+        <td>발신자 이름</td>
+      </tr>
+      <tr>
+        <td>to<br><code>Array</code></td>
+        <td>수신자 목록
+          <table width="100%">
+            <tr><td>email<br>`String`</td><td>수신자 E-mail 주소</td></tr>
+            <tr><td>name<br>`String`</td><td>수신자 이름</td></tr>
+            <tr><td>type<br>`String`</td><td>수신자 타입(to, cc, bcc)</td></tr>
+          </table>
+        </td>
+      </tr>
+      <tr><td>headers<br>``Struct``</td><td>E-mail 메시지에 추가할 부가적인 헤더
+<pre>"headers": {
+  "Header-Key1": "value1",
+  "Header-Key2": "value2"
+}</pre>
+      </td></tr>
+      <tr><td>important<br>`Boolean`</td><td>중요 메일 표시 여부</td></tr>
+      <tr><td>preserve_recipients<br>`Boolean`</td><td>모든 수신자를 E-mail 헤더의 To에 표시할 지 여부</td></tr>
+      <tr><td>bcc_address</td><td>개별 수신자의 E-mail을 수신 받을 숨긴 참조 이메일 주소</td></tr>
+      <tr><td>merge<br>`Boolean`, true</td><td>머지(Merge)기능 사용 여부</td></tr>
+      <tr><td>global\_merge\_vars<br>``Array``, `null`</td><td>전역 머지 태그
+        <table width="100%">
+          <tr><td>name\*<br>`String`</td><td>전역 머지 변수 이름, 대소문자를 구분하지 않으며 언더스코어(\_)로 시작할 수 없습니다.</td></tr>
+          <tr><td>content\*<br>`String`</td><td>전역 머지 변수 내용</td></tr>
+        </table>
+<pre>"global\_merge\_vars": [
+  {
+    "name": "greeting",
+    "content": "Hello world!"
+  },
+  {
+    "name": "foo",
+    "content": "bar"
+  }
+]</pre>
+      </td></tr>
+      <tr><td>merge\_vars<br>``Array``, `null`</td><td>사용자별 머지 변수, 전역 머지 변수와 이름이 같은 경우 오버라이드합니다.
+        <table width="100%">
+          <tr><td>**rcpt**\*<br>`String`</td><td>머지 변수를 적용할 수신자의 E-mail 주소</td></tr>
+          <tr><td>vars<br>`Array`, `null`</td><td>머지 변수 목록
+            <table width="100%">
+              <tr><td>name\*<br>`String`</td><td>머지 변수 이름, 대소문자를 구분하지 않으며 언더스코어(_)로 시작할 수 없습니다.</td></tr>
+              <tr><td>content\*<br>`String`</td><td>머지 변수 내용</td></tr>
+            </table>
+          </td></tr>
+        </table>
+<pre>"merge\_vars": {
+  "rcpt": "pigeon@csb.io",
+  "vars": [
+    {
+      "name": "foo",
+      "content": "bar"
+    },
+    {
+      "name": "created\_date",
+      "content": "2015-04-26"
+    }
+  ]
+}</pre>
+      </td></tr>
+      <tr><td>metadata<br>``Struct``, `null`</td><td>발송하는 E-mail과 관련된 메타 데이터이며 탐색할 수 있습니다
+<pre>"metadata": {
+  "custom_meta1": "value1",
+  "custom_meta2": "value2"
+}</pre>
+      </td></tr>
+      <tr><td>recipient_metadata<br>``Struct``, `null`</td><td>개별 사용자의 메타 데이터입니다.
+<pre>"recipient_metadata": {
+  "rcpt": "pigeon@csb.io",
+  "values": {
+    "custom_meta1": "foo",
+    "custom_meta2": "bar"
+  }
+}</pre>
+      </td></tr>
+      <tr><td>attachments<br>``Struct``, `null`</td><td>첨부파일 목록입니다.
+        <table width="100%">
+          <tr><td>type\*<br>`String`</td><td>첨부 파일의 MIME 타입</td></tr>
+          <tr><td>name\*<br>`String`</td><td>첨부 파일 이름</td></tr>
+          <tr><td>content\*<br>`String`</td><td>첨부파일의 내용을 Base64로 인코딩한 문자열</td></tr>
+        </table>
+      </td></tr>
+      <tr><td>images<br>``Struct``, `null`</td><td>메시지에 첨부할 이미지
+        <table width="100%">
+          <tr><td>type\*<br>`String`</td><td>이미지 파일의 MIME 타입, "image/"로 시작해야 합니다.</td></tr>
+          <tr><td>name\*<br>`String`</td><td>이미지 ID, E-mail HTML 본문 내에서 &lt;img src="cid:{name}"&gt;와 같이 사용합니다.</td></tr>
+          <tr><td>content\*<br>`String`</td><td>이미지 파일의 내용을 Base64로 인코딩한 문자열입니다.</td></tr>
+        </table>
+      </td></tr>
+    </table>
+  </td>
 </tr>
 </table>
 
@@ -113,18 +212,18 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
                 "Reply-To": "message.reply@example.com"
             },
             "important": false,
-            "track_opens": null,
-            "track_clicks": null,
-            "auto_text": null,
-            "auto_html": null,
-            "inline_css": null,
-            "url_strip_qs": null,
-            "preserve_recipients": null,
-            "view_content_link": null,
+            "track_opens": `null`,
+            "track_clicks": `null`,
+            "auto_text": `null`,
+            "auto_html": `null`,
+            "inline_css": `null`,
+            "url_strip_qs": `null`,
+            "preserve_recipients": `null`,
+            "view_content_link": `null`,
             "bcc_address": "message.bcc_address@example.com",
-            "tracking_domain": null,
-            "signing_domain": null,
-            "return_path_domain": null,
+            "tracking_domain": `null`,
+            "signing_domain": `null`,
+            "return_path_domain": `null`,
             "merge": true,
             "merge_language": "mailchimp",
             "global_merge_vars": [
@@ -189,7 +288,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
 	{
     	"email": "pigeon@csb.io",
         "status": "sent",
-        "reject_reason": null,
+        "reject_reason": `null`,
         "_id": "abc123abc123abc123abc123abc123"
     }
 ]
