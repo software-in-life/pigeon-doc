@@ -70,14 +70,12 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
 메시지를 E-mail로 발송할 수 있는 채널입니다.
 
 ### 3.1.1. E-mail 발송 `POST /email`
-요청 파라미터
-
-<table width="100%">
-<tr><td colspan="2">파라미터 목록</td></tr>
+<table width="100%" style="vertical-align:top">
+<tr><td colspan="2">E-mail 발송 요청 본문(Body)</td></tr>
 <tr>
-  <td><b>message</b><sup style="color:blue">required</sup><br><code>Struct</code></td>
+  <td valign="top"><b>message</b><sup style="color:blue">required</sup><br><code>Struct</code></td>
   <td>전송할 E-mail 메시지 정보
-    <table width="100%">
+    <table width="100%" style="vertical-align:top">
       <tr>
         <td>html<br><code>String</code></td>
         <td>발송할 E-mail 메시지의 HTML 본문</td>
@@ -101,7 +99,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
       <tr>
         <td><b>to<sup style="color:blue">required</sup></b><br><code>Array</code></td>
         <td>수신자 목록
-          <table width="100%">
+          <table width="100%" style="vertical-align:top">
             <tr><td>email<br><code>String</code></td><td>수신자 E-mail 주소</td></tr>
             <tr><td>name<br><code>String</code></td><td>수신자 이름</td></tr>
             <tr><td>type<br><code>String</code></td><td>수신자 타입(to, cc, bcc)</td></tr>
@@ -119,7 +117,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
       <tr><td>bcc_address<code>String</code>, <code>null</code></td><td>개별 수신자의 E-mail을 수신 받을 숨긴 참조 이메일 주소</td></tr>
       <tr><td>merge<br><code>Boolean</code>, <code>true</code></td><td>머지(Merge)기능 사용 여부</td></tr>
       <tr><td>global_merge_vars<br><code>Array</code>, <code>null</code></td><td>전역 머지 변수
-        <table width="100%">
+        <table width="100%" style="vertical-align:top">
           <tr><td><b>name<sup style="color:blue">required</sup></b><br><code>String</code></td><td>전역 머지 변수 이름, 대소문자를 구분하지 않으며 언더스코어(_)로 시작할 수 없습니다.</td></tr>
           <tr><td><b>content<sup style="color:blue">required</sup></b><br><code>String</code></td><td>전역 머지 변수 내용</td></tr>
         </table>
@@ -135,10 +133,10 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
 ]</pre>
       </td></tr>
       <tr><td>merge_vars<br><code>Array</code>, <code>null</code></td><td>사용자별 머지 변수, 전역 머지 변수와 이름이 같은 경우 오버라이드합니다.
-        <table width="100%">
+        <table width="100%" style="vertical-align:top">
           <tr><td><b>rcpt<sup style="color:blue">required</sup></b><br><code>String</code></td><td>머지 변수를 적용할 수신자의 E-mail 주소</td></tr>
           <tr><td>vars<br><code>Array</code>, <code>null</code></td><td>머지 변수 목록
-            <table width="100%">
+            <table width="100%" style="vertical-align:top">
               <tr><td><b>name<sup style="color:blue">required</sup></b><br><code>String</code></td><td>머지 변수 이름, 대소문자를 구분하지 않으며 언더스코어(_)로 시작할 수 없습니다.</td></tr>
               <tr><td><b>content<sup style="color:blue">required</sup></b><br><code>String</code></td><td>머지 변수 내용</td></tr>
             </table>
@@ -174,14 +172,14 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
 }</pre>
       </td></tr>
       <tr><td>attachments<br><code>Struct</code>, <code>null</code></td><td>첨부파일 목록입니다.
-        <table width="100%">
+        <table width="100%" style="vertical-align:top">
           <tr><td><b>type<sup style="color:blue">required</sup></b><br><code>String</code></td><td>첨부 파일의 MIME 타입</td></tr>
           <tr><td><b>name<sup style="color:blue">required</sup></b><br><code>String</code></td><td>첨부 파일 이름</td></tr>
           <tr><td><b>content<sup style="color:blue">required</sup></b><br><code>String</code></td><td>첨부파일의 내용을 Base64로 인코딩한 문자열</td></tr>
         </table>
       </td></tr>
       <tr><td>images<br><code>Struct</code>, <code>null</code></td><td>메시지에 첨부할 이미지
-        <table width="100%">
+        <table width="100%" style="vertical-align:top">
           <tr><td><b>type<sup style="color:blue">required</sup></b><br><code>String</code></td><td>이미지 파일의 MIME 타입, "image/"로 시작해야 합니다.</td></tr>
           <tr><td><b>name<sup style="color:blue">required</sup></b><br><code>String</code></td><td>이미지 ID, E-mail HTML 본문 내에서 &lt;img src="cid:{name}"&gt;와 같이 사용합니다.</td></tr>
           <tr><td><b>content<sup style="color:blue">required</sup></b><br><code>String</code></td><td>이미지 파일의 내용을 Base64로 인코딩한 문자열입니다.</td></tr>
@@ -196,7 +194,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
 <tr>
   <td>callback<br><code>Struct</code>, <code>null</code></td>
   <td>E-mail 발송 후 콜백 호출을 위한 정보
-    <table width="100%">
+    <table width="100%" style="vertical-align:top">
     <tr>
       <td>url<br><code>String</code></td>
       <td>콜백으로 호출될 URL</td>
@@ -246,7 +244,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
 </ul>
 </caption>
 
-<table width="100%">
+<table width="100%" style="vertical-align:top">
 <tr><td colspan="2"><b>응답</b></td></tr>
 <tr>
   <td>request_id<br><code>String</code></td>
@@ -255,7 +253,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
 <tr>
   <td>tasks<br><code>Array</code></td>
   <td>개별 수신자의 E-mail 발송 상태
-    <table width="100%">
+    <table width="100%" style="vertical-align:top">
     <tr>
       <td>email<br><code>String</code></td>
       <td>수신자 E-mail 주소</td>
@@ -305,13 +303,13 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
 <tr>
   <td>error<br><code>Struct</code></td>
   <td>요청 시 에러가 발생한 경우(요청 오류(4xx) 또는 내부 오류(5xx))
-    <table width="100%">
+    <table width="100%" style="vertical-align:top">
     <tr>
       <td>code<br><code>Integer</code></td>
       <td>오류 응답 코드</td>
     </tr>
     <tr>
-      <td>name<br><code>String</code><td>
+      <td>name<br><code>String</code></td>
       <td>오류 응답 이름</td>
     </tr>
     <tr>
@@ -330,7 +328,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
 </tr>
 </table>
 
-<table width="100%">
+<table width="100%" style="vertical-align:top">
 <tr>
   <td colspan="4">오류 목록</td>
 </tr>
