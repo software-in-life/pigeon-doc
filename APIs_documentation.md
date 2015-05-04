@@ -75,7 +75,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
 <table width="100%">
 <tr><td colspan="2">파라미터 목록</td></tr>
 <tr>
-  <td><b>message</b>*<br><code>Struct</code></td>
+  <td><b>message</b><sup style="color:blue">required</sup><br><code>Struct</code></td>
   <td>전송할 E-mail 메시지 정보
     <table width="100%">
       <tr>
@@ -91,7 +91,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
         <td>제목</td>
       </tr>
       <tr>
-        <td><b>from_email*</b><br><code>String</code></td>
+        <td><b>from_email<sup style="color:blue">required</sup></b><br><code>String</code></td>
         <td>발신자 E-mail 주소</td>
       </tr>
       <tr>
@@ -99,7 +99,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
         <td>발신자 이름</td>
       </tr>
       <tr>
-        <td>to<br><code>Array</code></td>
+        <td><b>to<sup style="color:blue">required</sup></b><br><code>Array</code></td>
         <td>수신자 목록
           <table width="100%">
             <tr><td>email<br><code>String</code></td><td>수신자 E-mail 주소</td></tr>
@@ -120,8 +120,8 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
       <tr><td>merge<br><code>Boolean</code>, <code>true</code></td><td>머지(Merge)기능 사용 여부</td></tr>
       <tr><td>global_merge_vars<br><code>Array</code>, <code>null</code></td><td>전역 머지 변수
         <table width="100%">
-          <tr><td><b>ame*</b><br><code>String</code></td><td>전역 머지 변수 이름, 대소문자를 구분하지 않으며 언더스코어(_)로 시작할 수 없습니다.</td></tr>
-          <tr><td><b>content*</b><br><code>String</code></td><td>전역 머지 변수 내용</td></tr>
+          <tr><td><b>name<sup style="color:blue">required</sup></b><br><code>String</code></td><td>전역 머지 변수 이름, 대소문자를 구분하지 않으며 언더스코어(_)로 시작할 수 없습니다.</td></tr>
+          <tr><td><b>content<sup style="color:blue">required</sup></b><br><code>String</code></td><td>전역 머지 변수 내용</td></tr>
         </table>
 <pre>"global_merge_vars": [
   {
@@ -136,11 +136,11 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
       </td></tr>
       <tr><td>merge_vars<br><code>Array</code>, <code>null</code></td><td>사용자별 머지 변수, 전역 머지 변수와 이름이 같은 경우 오버라이드합니다.
         <table width="100%">
-          <tr><td><b>rcpt*</b><br><code>String</code></td><td>머지 변수를 적용할 수신자의 E-mail 주소</td></tr>
+          <tr><td><b>rcpt<sup style="color:blue">required</sup></b><br><code>String</code></td><td>머지 변수를 적용할 수신자의 E-mail 주소</td></tr>
           <tr><td>vars<br><code>Array</code>, <code>null</code></td><td>머지 변수 목록
             <table width="100%">
-              <tr><td><b>name*</b><br><code>String</code></td><td>머지 변수 이름, 대소문자를 구분하지 않으며 언더스코어(_)로 시작할 수 없습니다.</td></tr>
-              <tr><td><b>content*</b><br><code>String</code></td><td>머지 변수 내용</td></tr>
+              <tr><td><b>name<sup style="color:blue">required</sup></b><br><code>String</code></td><td>머지 변수 이름, 대소문자를 구분하지 않으며 언더스코어(_)로 시작할 수 없습니다.</td></tr>
+              <tr><td><b>content<sup style="color:blue">required</sup></b><br><code>String</code></td><td>머지 변수 내용</td></tr>
             </table>
           </td></tr>
         </table>
@@ -175,22 +175,76 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
       </td></tr>
       <tr><td>attachments<br><code>Struct</code>, <code>null</code></td><td>첨부파일 목록입니다.
         <table width="100%">
-          <tr><td><b>type*</b><br><code>String</code></td><td>첨부 파일의 MIME 타입</td></tr>
-          <tr><td><b>name*</b><br><code>String</code></td><td>첨부 파일 이름</td></tr>
-          <tr><td><b>content*</b><br><code>String</code></td><td>첨부파일의 내용을 Base64로 인코딩한 문자열</td></tr>
+          <tr><td><b>type<sup style="color:blue">required</sup></b><br><code>String</code></td><td>첨부 파일의 MIME 타입</td></tr>
+          <tr><td><b>name<sup style="color:blue">required</sup></b><br><code>String</code></td><td>첨부 파일 이름</td></tr>
+          <tr><td><b>content<sup style="color:blue">required</sup></b><br><code>String</code></td><td>첨부파일의 내용을 Base64로 인코딩한 문자열</td></tr>
         </table>
       </td></tr>
       <tr><td>images<br><code>Struct</code>, <code>null</code></td><td>메시지에 첨부할 이미지
         <table width="100%">
-          <tr><td><b>type*</b><br><code>String</code></td><td>이미지 파일의 MIME 타입, "image/"로 시작해야 합니다.</td></tr>
-          <tr><td><b>name*</b><br><code>String</code></td><td>이미지 ID, E-mail HTML 본문 내에서 &lt;img src="cid:{name}"&gt;와 같이 사용합니다.</td></tr>
-          <tr><td><b>content*</b><br><code>String</code></td><td>이미지 파일의 내용을 Base64로 인코딩한 문자열입니다.</td></tr>
+          <tr><td><b>type<sup style="color:blue">required</sup></b><br><code>String</code></td><td>이미지 파일의 MIME 타입, "image/"로 시작해야 합니다.</td></tr>
+          <tr><td><b>name<sup style="color:blue">required</sup></b><br><code>String</code></td><td>이미지 ID, E-mail HTML 본문 내에서 &lt;img src="cid:{name}"&gt;와 같이 사용합니다.</td></tr>
+          <tr><td><b>content<sup style="color:blue">required</sup></b><br><code>String</code></td><td>이미지 파일의 내용을 Base64로 인코딩한 문자열입니다.</td></tr>
         </table>
       </td></tr>
+      <tr>
+        <td>send_at<sup style="color:red">reserved</sup><br><code>Datetime</code>, <code>null</code></td>
+        <td>예약 메일 발송 시 사용하는 값으로써 <code>YYYY-MM-DD HH:MM:SS</code>의 포맷으로 발송할 시간을 지정합니다. 과거시간이거나 지정되지 않은 경우, 요청 즉시 발송합니다.</td></tr>
+    </table>
+  </td>
+</tr>
+<tr>
+  <td>callback<br><code>Struct</code>, <code>null</code></td>
+  <td>E-mail 발송 후 콜백 호출을 위한 정보
+    <table width="100%">
+    <tr>
+      <td>url<br><code>String</code></td>
+      <td>콜백으로 호출될 URL</td>
+    </tr>
+    <tr>
+      <td>type<br><code>String</code></td>
+      <td>콜백 호출 타입, request 또는 recipient
+        <ul>
+          <li>request: 모든 수신자에게 E-mail 발송 시도 후 콜백을 호출하며, 요청에 대해 1회 콜백을 호출합니다. 각 수신자에게 E-mail을 발송하고 실패 시 최대 3회까지 재시도하며, 모든 E-mail이 성공 또는 실패의 상태로 처리가 되면 콜백을 호출하게 됩니다.
+<pre>{
+  "request_id": "abc123abc123abc123abc123abc123abc123",
+  "tasks": [
+    {
+       "email": "pigeon@csb.io",
+       "task_id": "def456def456def456def456def456",
+       "status": "sent"
+       "reject_reason": null
+    },
+    {
+       "email": "pigeon2@csb.io",
+       "task_id": "246aef246aef246aef246aef246aef",
+       "status": "rejected"
+       "reject_reason": "invalid_email_address"
+    }
+  ]
+}</pre>
+          </li>
+          <li>recipient: 개별 사용자에게 메일 발송이 처리된 후 콜백을 호출합니다
+<pre>{
+  "email": "pigeon@csb.io",
+  "task_id": "def456def456def456def456def456",
+  "status": "sent",
+  "reject_reason": null
+}</pre>
+          </li>
+        </ul>
+      </td>
+    </tr>
     </table>
   </td>
 </tr>
 </table>
+<caption>
+<ul>
+  <li><sup style="color:blue">required</sup>: 필수 입력 사항입니다.</li>
+  <li><sup style="color:red">reserved</sup>: 아직 지원하지 않는 기능입니다.</li>
+</ul>
+</caption>
 
 <table width="100%">
 <tr><td colspan="2"><b>응답</b></td></tr>
@@ -276,6 +330,48 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
 </tr>
 </table>
 
+<table width="100%">
+<tr>
+  <td colspan="4">오류 목록</td>
+</tr>
+<tr>
+  <td>에러 이름</td>
+  <td>Response Code</td>
+  <td>Error Code</td>
+  <td>설명</td>
+</tr>
+<tr>
+  <td>INVALID_API_KEY</td>
+  <td>403</td>
+  <td>10</td>
+  <td>API 키가 올바르지 않은 경우</td>
+</tr>
+<tr>
+  <td>VALIDATION_ERROR</td>
+  <td></td>
+  <td></td>
+  <td>작성 중입니다.</td>
+<tr>
+<tr>
+  <td>GENERAL_ERROR</td>
+  <td></td>
+  <td></td>
+  <td></td>
+<tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+<tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+<tr>
+</table>
+
 
 요청 본문 예
 
@@ -349,7 +445,8 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
 Pigeon은 Merge 기능을 제공합니다. Merge 기능을 통해 다수의 사용자에게 E-mail을 전송할 시 전역적 또는 사용자별로 E-mail 본문의 내용을 개인화하여 보낼 수 있습니다.
 E-mail 전송 API 이용 시 머지 변수를 이용하여 머지 기능을 사용할 수 있으며 사용 방법은 아래와 같습니다.
 
-#### 포맷
+#### Mailchimp Template
+##### 포맷
 	
     *|MERGETAG_NAME|*
     
@@ -400,6 +497,8 @@ E-mail 본문 내에서 위와 같이 애스터리스크 문자(별표, *)와 �
     
 }
 ```
+#### Handlebars Template
+작성 중..
 
 
 ### 3.1.3. E-mail 발송 상태 확인 ``GET /email/{task_id}``
