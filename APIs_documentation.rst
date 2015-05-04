@@ -77,8 +77,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
 3.1.1. E-mail 발송 ``POST /email``
 ----
 요청 본문
-.. sourcecode:: javascript
-
+```
     {
         "message": {
             "html": "<p>Example HTML content</p>",
@@ -166,7 +165,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
         "ip_pool": "Main Pool",
         "send_at": "example send_at"
     }
-
+```
 
 머지(Merge)
 ^^^^
