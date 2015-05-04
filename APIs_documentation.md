@@ -69,13 +69,13 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
 ====
 메시지를 E-mail로 발송할 수 있는 채널입니다.
 
-### 3.1.1. E-mail 발송 ``POST /email``
+### 3.1.1. E-mail 발송 `POST /email`
 요청 파라미터
 
 <table width="100%">
 <tr><td colspan="2">파라미터 목록</td></tr>
 <tr>
-  <td>**message**\*<br>`Struct`</td>
+  <td><b>message</b>*<br><code>Struct</code></td>
   <td>전송할 E-mail 메시지 정보
     <table width="100%">
       <tr>
@@ -91,39 +91,39 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
         <td>제목</td>
       </tr>
       <tr>
-        <td>**from_email**\*<br>`String`</td>
+        <td><b>from_email*</b><br><code>String</code></td>
         <td>발신자 E-mail 주소</td>
       </tr>
       <tr>
-        <td>from_name<br>`String`, `null`</td>
+        <td>from_name<br><code>String</code>, <code>null</code></td>
         <td>발신자 이름</td>
       </tr>
       <tr>
         <td>to<br><code>Array</code></td>
         <td>수신자 목록
           <table width="100%">
-            <tr><td>email<br>`String`</td><td>수신자 E-mail 주소</td></tr>
-            <tr><td>name<br>`String`</td><td>수신자 이름</td></tr>
-            <tr><td>type<br>`String`</td><td>수신자 타입(to, cc, bcc)</td></tr>
+            <tr><td>email<br><code>String</code></td><td>수신자 E-mail 주소</td></tr>
+            <tr><td>name<br><code>String</code></td><td>수신자 이름</td></tr>
+            <tr><td>type<br><code>String</code></td><td>수신자 타입(to, cc, bcc)</td></tr>
           </table>
         </td>
       </tr>
-      <tr><td>headers<br>``Struct``</td><td>E-mail 메시지에 추가할 부가적인 헤더
+      <tr><td>headers<br><code>Struct</code></td><td>E-mail 메시지에 추가할 부가적인 헤더
 <pre>"headers": {
   "Header-Key1": "value1",
   "Header-Key2": "value2"
 }</pre>
       </td></tr>
-      <tr><td>important<br>`Boolean`</td><td>중요 메일 표시 여부</td></tr>
-      <tr><td>preserve_recipients<br>`Boolean`</td><td>모든 수신자를 E-mail 헤더의 To에 표시할 지 여부</td></tr>
-      <tr><td>bcc_address</td><td>개별 수신자의 E-mail을 수신 받을 숨긴 참조 이메일 주소</td></tr>
-      <tr><td>merge<br>`Boolean`, true</td><td>머지(Merge)기능 사용 여부</td></tr>
-      <tr><td>global\_merge\_vars<br>``Array``, `null`</td><td>전역 머지 태그
+      <tr><td>important<br><code>Boolean</code></td><td>중요 메일 표시 여부</td></tr>
+      <tr><td>preserve_recipients<br><code>Boolean</code></td><td>모든 수신자를 E-mail 헤더의 To에 표시할 지 여부</td></tr>
+      <tr><td>bcc_address<code>String</code>, <code>null</code></td><td>개별 수신자의 E-mail을 수신 받을 숨긴 참조 이메일 주소</td></tr>
+      <tr><td>merge<br><code>Boolean</code>, <code>true</code></td><td>머지(Merge)기능 사용 여부</td></tr>
+      <tr><td>global_merge_vars<br><code>Array</code>, <code>null</code></td><td>전역 머지 변수
         <table width="100%">
-          <tr><td>name\*<br>`String`</td><td>전역 머지 변수 이름, 대소문자를 구분하지 않으며 언더스코어(\_)로 시작할 수 없습니다.</td></tr>
-          <tr><td>content\*<br>`String`</td><td>전역 머지 변수 내용</td></tr>
+          <tr><td><b>ame*</b><br><code>String</code></td><td>전역 머지 변수 이름, 대소문자를 구분하지 않으며 언더스코어(_)로 시작할 수 없습니다.</td></tr>
+          <tr><td><b>content*</b><br><code>String</code></td><td>전역 머지 변수 내용</td></tr>
         </table>
-<pre>"global\_merge\_vars": [
+<pre>"global_merge_vars": [
   {
     "name": "greeting",
     "content": "Hello world!"
@@ -134,17 +134,17 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
   }
 ]</pre>
       </td></tr>
-      <tr><td>merge\_vars<br>``Array``, `null`</td><td>사용자별 머지 변수, 전역 머지 변수와 이름이 같은 경우 오버라이드합니다.
+      <tr><td>merge_vars<br><code>Array</code>, <code>null</code></td><td>사용자별 머지 변수, 전역 머지 변수와 이름이 같은 경우 오버라이드합니다.
         <table width="100%">
-          <tr><td>**rcpt**\*<br>`String`</td><td>머지 변수를 적용할 수신자의 E-mail 주소</td></tr>
-          <tr><td>vars<br>`Array`, `null`</td><td>머지 변수 목록
+          <tr><td><b>rcpt*</b><br><code>String</code></td><td>머지 변수를 적용할 수신자의 E-mail 주소</td></tr>
+          <tr><td>vars<br><code>Array</code>, <code>null</code></td><td>머지 변수 목록
             <table width="100%">
-              <tr><td>name\*<br>`String`</td><td>머지 변수 이름, 대소문자를 구분하지 않으며 언더스코어(_)로 시작할 수 없습니다.</td></tr>
-              <tr><td>content\*<br>`String`</td><td>머지 변수 내용</td></tr>
+              <tr><td><b>name*</b><br><code>String</code></td><td>머지 변수 이름, 대소문자를 구분하지 않으며 언더스코어(_)로 시작할 수 없습니다.</td></tr>
+              <tr><td><b>content*</b><br><code>String</code></td><td>머지 변수 내용</td></tr>
             </table>
           </td></tr>
         </table>
-<pre>"merge\_vars": {
+<pre>"merge_vars": {
   "rcpt": "pigeon@csb.io",
   "vars": [
     {
@@ -152,19 +152,19 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
       "content": "bar"
     },
     {
-      "name": "created\_date",
+      "name": "created_date",
       "content": "2015-04-26"
     }
   ]
 }</pre>
       </td></tr>
-      <tr><td>metadata<br>``Struct``, `null`</td><td>발송하는 E-mail과 관련된 메타 데이터이며 탐색할 수 있습니다
+      <tr><td>metadata<br><code>Struct</code>, <code>null</code></td><td>발송하는 E-mail과 관련된 메타 데이터이며 탐색할 수 있습니다
 <pre>"metadata": {
   "custom_meta1": "value1",
   "custom_meta2": "value2"
 }</pre>
       </td></tr>
-      <tr><td>recipient_metadata<br>``Struct``, `null`</td><td>개별 사용자의 메타 데이터입니다.
+      <tr><td>recipient_metadata<br><code>Struct</code>, <code>null</code></td><td>개별 사용자의 메타 데이터입니다.
 <pre>"recipient_metadata": {
   "rcpt": "pigeon@csb.io",
   "values": {
@@ -173,24 +173,109 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
   }
 }</pre>
       </td></tr>
-      <tr><td>attachments<br>``Struct``, `null`</td><td>첨부파일 목록입니다.
+      <tr><td>attachments<br><code>Struct</code>, <code>null</code></td><td>첨부파일 목록입니다.
         <table width="100%">
-          <tr><td>type\*<br>`String`</td><td>첨부 파일의 MIME 타입</td></tr>
-          <tr><td>name\*<br>`String`</td><td>첨부 파일 이름</td></tr>
-          <tr><td>content\*<br>`String`</td><td>첨부파일의 내용을 Base64로 인코딩한 문자열</td></tr>
+          <tr><td><b>type*</b><br><code>String</code></td><td>첨부 파일의 MIME 타입</td></tr>
+          <tr><td><b>name*</b><br><code>String</code></td><td>첨부 파일 이름</td></tr>
+          <tr><td><b>content*</b><br><code>String</code></td><td>첨부파일의 내용을 Base64로 인코딩한 문자열</td></tr>
         </table>
       </td></tr>
-      <tr><td>images<br>``Struct``, `null`</td><td>메시지에 첨부할 이미지
+      <tr><td>images<br><code>Struct</code>, <code>null</code></td><td>메시지에 첨부할 이미지
         <table width="100%">
-          <tr><td>type\*<br>`String`</td><td>이미지 파일의 MIME 타입, "image/"로 시작해야 합니다.</td></tr>
-          <tr><td>name\*<br>`String`</td><td>이미지 ID, E-mail HTML 본문 내에서 &lt;img src="cid:{name}"&gt;와 같이 사용합니다.</td></tr>
-          <tr><td>content\*<br>`String`</td><td>이미지 파일의 내용을 Base64로 인코딩한 문자열입니다.</td></tr>
+          <tr><td><b>type*</b><br><code>String</code></td><td>이미지 파일의 MIME 타입, "image/"로 시작해야 합니다.</td></tr>
+          <tr><td><b>name*</b><br><code>String</code></td><td>이미지 ID, E-mail HTML 본문 내에서 &lt;img src="cid:{name}"&gt;와 같이 사용합니다.</td></tr>
+          <tr><td><b>content*</b><br><code>String</code></td><td>이미지 파일의 내용을 Base64로 인코딩한 문자열입니다.</td></tr>
         </table>
       </td></tr>
     </table>
   </td>
 </tr>
 </table>
+
+<table width="100%">
+<tr><td colspan="2"><b>응답</b></td></tr>
+<tr>
+  <td>request_id<br><code>String</code></td>
+  <td>E-mail 발송 API 요청의 ID, request_id 또는 각 수신자별 task_id를 이용해 메일 발송 작업 상태를 조회할 수 있습니다.</td>
+</tr>
+<tr>
+  <td>tasks<br><code>Array</code></td>
+  <td>개별 수신자의 E-mail 발송 상태
+    <table width="100%">
+    <tr>
+      <td>email<br><code>String</code></td>
+      <td>수신자 E-mail 주소</td>
+    </tr>
+    <tr>
+      <td>status<br><code>String</code></td>
+      <td>해당 수신자의 E-mail 발송 상태, sent, queued, scheduled, rejected 또는 invalid
+        <ul>
+          <li>sent: 메일이 발송된 상태</li>
+          <li>queued: 메일 발송 작업 처리 큐에 저장된 상태</li>
+          <li>scheduled: 예약 메일의 경우, 발송 대기 상태</li>
+          <li>rejected: 반송된 경우</li>
+          <li>invalid: 유효하지 않은 E-mail 발송 요청의 경우</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>reject_reason<br><code>String</code></td>
+      <td>status가 <code>rejected</code>인 경우 반송 사유, hard-bounce, soft-bounce, spam, unsub, custom, invalid-sender, invalid, test-mode-limit, rule</td>
+    </tr>
+    <tr>
+      <td>task_id<br><code>String</code></td>
+      <td>발송 E-mail의 식별자 ID</td>
+    </tr>
+    </table>
+
+응답 예시
+<pre>{
+  "request_id": "abc123abc123abc123abc123abc123",
+  "tasks": [
+    {
+      "email": "pigeon@csb.io",
+      "status": "queued",
+      "reject_reason": null,
+      "task_id": "def456def456def456def456def456"
+    },
+    {
+      "email": "pigeon2@csb.io",
+      "status": "queued",
+      "reject_reason": null,
+      "task_id": "def456def456def456def456def456"
+    }
+  ]
+}</pre>
+  </td>
+</tr>
+<tr>
+  <td>error<br><code>Struct</code></td>
+  <td>요청 시 에러가 발생한 경우(요청 오류(4xx) 또는 내부 오류(5xx))
+    <table width="100%">
+    <tr>
+      <td>code<br><code>Integer</code></td>
+      <td>오류 응답 코드</td>
+    </tr>
+    <tr>
+      <td>name<br><code>String</code><td>
+      <td>오류 응답 이름</td>
+    </tr>
+    <tr>
+      <td>message<br><code>String</code></td>
+      <td>오류 메시지</td>
+    </tr>
+    </table>
+    
+오류 응답 예시
+<pre>{
+  "code": 10,
+  "name": "INVALID_API_KEY",
+  "message": "abc123abc123abc123abc123은 잘못된 API 키입니다."
+}</pre>
+  </td>
+</tr>
+</table>
+
 
 요청 본문 예
 
@@ -212,18 +297,8 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
                 "Reply-To": "message.reply@example.com"
             },
             "important": false,
-            "track_opens": `null`,
-            "track_clicks": `null`,
-            "auto_text": `null`,
-            "auto_html": `null`,
-            "inline_css": `null`,
-            "url_strip_qs": `null`,
-            "preserve_recipients": `null`,
-            "view_content_link": `null`,
+            "preserve_recipients": <code>null</code>,
             "bcc_address": "message.bcc_address@example.com",
-            "tracking_domain": `null`,
-            "signing_domain": `null`,
-            "return_path_domain": `null`,
             "merge": true,
             "merge_language": "mailchimp",
             "global_merge_vars": [
@@ -243,17 +318,6 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
                     ]
                 }
             ],
-            "tags": [
-                "password-resets"
-            ],
-            "subaccount": "customer-123",
-            "google_analytics_domains": [
-                "example.com"
-            ],
-            "google_analytics_campaign": "message.from_email@example.com",
-            "metadata": {
-                "website": "www.example.com"
-            },
             "recipient_metadata": [
                 {
                     "rcpt": "recipient.email@example.com",
@@ -277,41 +341,19 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
                 }
             ]
         },
-        "async": false,
-        "ip_pool": "Main Pool",
         "send_at": "example send_at"
     }
 
-응답 본문
-```
-[
-	{
-    	"email": "pigeon@csb.io",
-        "status": "sent",
-        "reject_reason": `null`,
-        "_id": "abc123abc123abc123abc123abc123"
-    }
-]
-```
-에러 응답 시
-```
-[
-	"status": "error",
-    "code": 12,
-    "name": "Unknown_Subaccount",
-    "message": "No subaccount exists with the id 'pigeon-sa-001'"
-]
-```
 ### 머지(Merge)
 
 Pigeon은 Merge 기능을 제공합니다. Merge 기능을 통해 다수의 사용자에게 E-mail을 전송할 시 전역적 또는 사용자별로 E-mail 본문의 내용을 개인화하여 보낼 수 있습니다.
-E-mail 전송 API 이용 시 머지 태그를 이용하여 머지 기능을 사용할 수 있으며 사용 방법은 아래와 같습니다.
+E-mail 전송 API 이용 시 머지 변수를 이용하여 머지 기능을 사용할 수 있으며 사용 방법은 아래와 같습니다.
 
 #### 포맷
 	
     *|MERGETAG_NAME|*
     
-E-mail 본문 내에서 위와 같이 애스터리스크 문자(별표, *)와 파이프 문자(|)로 머지 태그 이름을 삽입하고, API 요청 시에 머지 태그와 대체할 문자열 값을 전달하면 변환된 본문 내용으로 발송하게 됩니다. 아래는 예시입니다.
+E-mail 본문 내에서 위와 같이 애스터리스크 문자(별표, *)와 파이프 문자(|)로 머지 변수 이름을 삽입하고, API 요청 시에 머지 변수와 대체할 문자열 값을 전달하면 변환된 본문 내용으로 발송하게 됩니다. 아래는 예시입니다.
 ```
 *|NAME|*님, 안녕하세요
 *|ORDERDATE|*에 CSB.IO에서 주문하신 내역입니다.
@@ -321,8 +363,8 @@ E-mail 본문 내에서 위와 같이 애스터리스크 문자(별표, *)와 �
 감사합니다.
 *|BRAND_NAME|* 드림
 ```
-머지 태그는 `global_merge_vars`와 `merge_vars`로 나뉘어집니다. `global_merge_vars`는 모든 수신자에게 동일하게 적용되는 머지 태그이며, `merge_vars`는 개별 수신자에게 적용되는 머지 태그입니다. API 요청 시에 message 객체 내에 각각 `global_merge_vars` 속성과 `merge_vars` 속성으로 머지 태그를 전달합니다.  
-머지 태그 키는 대소문자를 구분하지 않는 알파벳과 언더스코어(_) 문자를 사용할 수 있습니다.
+머지 변수는 `global_merge_vars`와 `merge_vars`로 나뉘어집니다. `global_merge_vars`는 모든 수신자에게 동일하게 적용되는 머지 변수이며, `merge_vars`는 개별 수신자에게 적용되는 머지 변수입니다. API 요청 시에 message 객체 내에 각각 `global_merge_vars` 속성과 `merge_vars` 속성으로 머지 변수를 전달합니다.  
+머지 변수 키는 대소문자를 구분하지 않는 알파벳과 언더스코어(_) 문자를 사용할 수 있습니다.
 ```
 "message": {
 	
