@@ -323,9 +323,11 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
     
 오류 응답 예시
 <pre>{
-  "code": 10,
-  "name": "INVALID_API_KEY",
-  "message": "abc123abc123abc123abc123은 잘못된 API 키입니다."
+  "error": {
+    "code": 10,
+    "name": "INVALID_API_KEY",
+    "message": "abc123abc123abc123abc123은 잘못된 API 키입니다."
+  }
 }</pre>
   </td>
 </tr>
