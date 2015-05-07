@@ -112,7 +112,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
   "Header-Key2": "value2"
 }</pre>
       </td></tr>
-      <tr><td>important<br><code>Boolean</code></td><td>중요 메일 표시 여부</td></tr>
+      <tr><td>important<br><code>Boolean</code>,<code>null</code></td><td>중요 메일 표시 여부</td></tr>
       <tr><td>preserve_recipients<br><code>Boolean</code></td><td>모든 수신자를 E-mail 헤더의 To에 표시할 지 여부</td></tr>
       <tr><td>bcc_address<code>String</code>, <code>null</code></td><td>개별 수신자의 E-mail을 수신 받을 숨긴 참조 이메일 주소</td></tr>
       <tr><td>merge<br><code>Boolean</code>, <code>true</code></td><td>머지(Merge)기능 사용 여부</td></tr>
@@ -142,9 +142,10 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
             </table>
           </td></tr>
         </table>
-<pre>"merge_vars": {
-  "rcpt": "pigeon@csb.io",
-  "vars": [
+<pre>"merge_vars": [
+  {
+    "rcpt": "pigeon@csb.io",
+    "vars": [
     {
       "name": "foo",
       "content": "bar"
@@ -153,7 +154,8 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
       "name": "created_date",
       "content": "2015-04-26"
     }
-  ]
+  }
+]
 }</pre>
       </td></tr>
       <tr><td>metadata<br><code>Struct</code>, <code>null</code></td><td>발송하는 E-mail과 관련된 메타 데이터이며 탐색할 수 있습니다
@@ -162,13 +164,16 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
   "custom_meta2": "value2"
 }</pre>
       </td></tr>
-      <tr><td>recipient_metadata<br><code>Struct</code>, <code>null</code></td><td>개별 사용자의 메타 데이터입니다.
-<pre>"recipient_metadata": {
-  "rcpt": "pigeon@csb.io",
-  "values": {
-    "custom_meta1": "foo",
-    "custom_meta2": "bar"
-  }
+      <tr><td>recipient_metadata<br><code>Array</code>, <code>null</code></td><td>개별 사용자의 메타 데이터입니다.
+<pre>"recipient_metadata": [
+	{
+      "rcpt": "pigeon@csb.io",
+      "values": {
+        "custom_meta1": "foo",
+        "custom_meta2": "bar"
+      }
+    }
+  ]
 }</pre>
       </td></tr>
       <tr><td>attachments<br><code>Struct</code>, <code>null</code></td><td>첨부파일 목록입니다.
