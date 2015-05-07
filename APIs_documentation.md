@@ -155,8 +155,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
       "content": "2015-04-26"
     }
   }
-]
-}</pre>
+]</pre>
       </td></tr>
       <tr><td>metadata<br><code>Struct</code>, <code>null</code></td><td>발송하는 E-mail과 관련된 메타 데이터이며 탐색할 수 있습니다
 <pre>"metadata": {
