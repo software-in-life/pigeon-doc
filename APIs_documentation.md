@@ -173,8 +173,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
         "custom_meta2": "bar"
       }
     }
-  ]
-}</pre>
+]</pre>
       </td></tr>
       <tr><td>attachments<br><code>Struct</code>, <code>null</code></td><td>첨부파일 목록입니다.
         <table width="100%" style="vertical-align:top">
