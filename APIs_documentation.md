@@ -441,7 +441,10 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
             ],
             "send_at": "example send_at"
         },
-        "callback": "https://www.csb.io"
+        "callback": {
+            "url": "https://www.csb.io",
+            "type": "request"
+        }
     }
 
 ### 머지(Merge)
