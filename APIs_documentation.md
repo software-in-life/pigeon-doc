@@ -438,9 +438,10 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
                     "name": "IMAGECID",
                     "content": "ZXhhbXBsZSBmaWxl"
                 }
-            ]
+            ],
+            "send_at": "example send_at"
         },
-        "send_at": "example send_at"
+        "callback": "https://www.csb.io"
     }
 
 ### 머지(Merge)
