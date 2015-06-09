@@ -381,32 +381,28 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
     {
         "message": {
             "html": "<p>Example HTML content</p>",
-            "text": "Example text content",
+            "text": "Summary Message",
             "subject": "example subject",
-            "from_email": "message.from_email@example.com",
-            "from_name": "Example Name",
+            "fromEmail": "koltwgi@naver.com",
+            "fromName": "Junyoung Lee",
             "to": [
                 {
-                    "email": "recipient.email@example.com",
+                    "email": "nnoco@softwareinlife.com",
                     "name": "Recipient Name",
                     "type": "to"
                 }
             ],
-            "headers": {
-                "Reply-To": "message.reply@example.com"
-            },
-            "important": false,
-            "preserve_recipients": <code>null</code>,
-            "bcc_address": "message.bcc_address@example.com",
+            "important": true,
+            "preserveRecipients": false,
             "merge": true,
-            "merge_language": "mailchimp",
-            "global_merge_vars": [
+            "mergeLanguage": "mailchimp",
+            "globalMergeVars": [
                 {
                     "name": "merge1",
                     "content": "merge1 content"
                 }
             ],
-            "merge_vars": [
+            "mergeVars": [
                 {
                     "rcpt": "recipient.email@example.com",
                     "vars": [
@@ -417,7 +413,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
                     ]
                 }
             ],
-            "recipient_metadata": [
+            "recipientMetadata": [
                 {
                     "rcpt": "recipient.email@example.com",
                     "values": {
@@ -438,8 +434,7 @@ API 키의 유효기간을 무제한, 날짜 지정, 상대 날짜 지정을 통
                     "name": "IMAGECID",
                     "content": "ZXhhbXBsZSBmaWxl"
                 }
-            ],
-            "send_at": "example send_at"
+            ]
         },
         "callback": {
             "url": "https://www.csb.io",
