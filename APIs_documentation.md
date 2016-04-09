@@ -3,10 +3,6 @@
 
 ----
 
-.. contents:: 목차
-
-----
-
 1. 개요
 ====
 Pigeon 메일 발송 서비스 API입니다. 본 문서에서는 Pigeon API의 규격을 설명하고 있으며,  
@@ -23,7 +19,7 @@ API 요청 메시지는 아래와 같이 구성됩니다.
 
 ``(1)API_SERVER_URL + (2)/API_URI + (3)응답 포맷``
 
-1. (1) API_SERVER_URL : Pigeon API 서버 URL로써 ``https://pigeon.csb.io/api/v1`` 입니다.
+1. (1) API_SERVER_URL : Pigeon API 서버 URL
 2. (2) API_URI : 각 API의 URI입니다.
 3. (3) 응답 포맷 : 응답 포맷 형식을 확장자 형태로 전달합니다. 예) ``/email.json``
 
@@ -499,9 +495,6 @@ E-mail 본문 내에서 위와 같이 애스터리스크 문자(별표, *)와 �
     
 }
 ```
-#### Handlebars Template
-작성 중..
-
 
 ### 3.1.3. E-mail 발송 상태 확인 ``GET /email/{task_id}``
 E-mail 발송 요청이 정상적으로 처리되면 E-mail ``task_id``를 응답으로 받을 수 있습니다. ``task_id``를 통해 발송 상태를 조회할 수 있습니다.
